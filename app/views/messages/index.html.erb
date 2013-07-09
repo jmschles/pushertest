@@ -1,0 +1,21 @@
+<h1>Messages</h1>
+
+<div id="chatbox">
+  <ul id="chat">
+    <% if @messages.count <= 10 %>
+      <%= render @messages %>
+    <% else %>
+      <%= render @messages[-10..-1] %>
+    <% end %>
+  </ul>
+
+  <%= form_for Message.new, :remote => true do |f| %>
+    <%= f.text_field :content %>
+    <%= f.submit "Send" %>
+  <% end %>
+</div>
+
+<div id="membersbox">
+  <ul id="members">
+  </ul>
+</div>

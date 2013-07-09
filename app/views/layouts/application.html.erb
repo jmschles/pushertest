@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pushertest</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <script src="http://js.pusher.com/2.1/pusher.min.js"></script>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if current_user %>
+  <p></em>Welcome, <%= current_user.email %>!</em></p>
+<% end %>
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<%= yield %>
+
+</body>
+</html>
