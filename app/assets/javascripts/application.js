@@ -18,6 +18,7 @@ var pusher = new Pusher('942f40662c8b1236e58b');
 
 var channel = pusher.subscribe('presence-channel');
 
+// Enter the chatroom on login
 channel.bind('pusher:subscription_succeeded', function() {
   console.log("Entered room");
   var $membersList = $('<ul>');
@@ -32,6 +33,7 @@ channel.bind('pusher:subscription_succeeded', function() {
   $("#membersbox").html($membersList);
 });
 
+// Update the chatroom list when someone logs in
 channel.bind('pusher:member_added', function (member) {
   var $membersList = $('.members');
   var $li = $('<li>');
@@ -42,16 +44,20 @@ channel.bind('pusher:member_added', function (member) {
   dedup();
 });
 
+
+// Remove logged out members from chatroom list
 channel.bind('pusher:member_removed', function (member) {
   $(".members").find("[data-id='" + member.id + "']").remove();
 });
 
+// Sending messages
 channel.bind('my-event', function(data) {
   $('#chat').append('<li>' + data.name + ': ' + data.message + '</li>');
   $('#chat').children().slice(0,-10).hide();
   $('#chatbox input[type="text"]').val("");
 });
 
+// Get rid of duplicates in chatroom list (refresh duping bug fix)
 var dedup = function () {
   var seen = {};
   $('.members li').each(function () {

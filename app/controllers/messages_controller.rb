@@ -16,7 +16,7 @@ class MessagesController < ApplicationController
   end
 
   def index
-    @messages = Message.all
+    @messages = Message.where(created_at: (current_user.current_sign_in_at..Time.now))
   end
 
 end
