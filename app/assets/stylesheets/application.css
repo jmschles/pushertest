@@ -12,15 +12,9 @@
  *= require_tree .
  */
 
- #chatbox {
+#membersbox {
   width: 40%;
   border: 1px solid #ccc;
   float: left;
- }
-
- #membersbox {
-  width: 40%;
-  border: 1px solid #ccc;
-  float: left;
-  margin-right: 20px;
- }
+  margin-left: 20px;
+}

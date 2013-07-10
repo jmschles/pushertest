@@ -14,19 +14,20 @@
 //= require jquery_ujs
 //= require_tree .
 
-
 var pusher = new Pusher('942f40662c8b1236e58b');
 
 var channel = pusher.subscribe('presence-channel');
 
-channel.bind('my-event', function(data) {
-  console.log(channel.members);
+channel.bind('pusher:subscription_succeeded', function() {
+  console.log("Entered room");
   var $membersList = $('<ul>');
   channel.members.each(function(member) {
     $membersList.append('<li>' + member.info.email + '</li>');
   });
   $("#membersbox").html($membersList);
+});
 
+channel.bind('my-event', function(data) {
   $('#chat').append('<li>' + data.name + ': ' + data.message + '</li>');
   $('#chat').children().slice(0,-10).hide();
   $('#chatbox input[type="text"]').val("");
