@@ -21,10 +21,29 @@ var channel = pusher.subscribe('presence-channel');
 channel.bind('pusher:subscription_succeeded', function() {
   console.log("Entered room");
   var $membersList = $('<ul>');
+  $membersList.addClass('members');
   channel.members.each(function(member) {
-    $membersList.append('<li>' + member.info.email + '</li>');
+    var $li = $('<li>');
+    $li.attr('data-id', member.id);
+    $li.html(member.info.email);
+
+    $membersList.append($li);
   });
   $("#membersbox").html($membersList);
+});
+
+channel.bind('pusher:member_added', function (member) {
+  var $membersList = $('.members');
+  var $li = $('<li>');
+  $li.attr('data-id', member.id);
+  $li.html(member.info.email);
+  $membersList.append($li);
+
+  dedup();
+});
+
+channel.bind('pusher:member_removed', function (member) {
+  $(".members").find("[data-id='" + member.id + "']").remove();
 });
 
 channel.bind('my-event', function(data) {
@@ -32,3 +51,15 @@ channel.bind('my-event', function(data) {
   $('#chat').children().slice(0,-10).hide();
   $('#chatbox input[type="text"]').val("");
 });
+
+var dedup = function () {
+  var seen = {};
+  $('.members li').each(function () {
+    var txt = $(this).text();
+    if (seen[txt]) {
+      $(this).remove();
+    } else {
+      seen[txt] = true;
+    }
+  });
+}
