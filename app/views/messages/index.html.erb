@@ -1,6 +1,9 @@
-<h1>Messages</h1>
+<script id="current_user" type="text/json">
+  <%= current_user.email %>
+</script>
 
 <div id="chatbox">
+  <h3>Chat Room</h3>
   <ul id="chat">
     <% if @messages.count <= 10 %>
       <%= render @messages %>
@@ -17,3 +20,6 @@
 
 <div id="membersbox">
 </div>
+
+<%= button_to "Play Snake", game_playsnake_url, :method => "get" %>
+<%= button_to "Play Asteroids", game_playasteroids_url, :method => "get" %>

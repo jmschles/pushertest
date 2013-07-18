@@ -1,0 +1,32 @@
+h1 {
+	text-align: center;
+	font-family: georgia;
+	font-weight: bold;
+	color: #072;
+}
+
+#container {
+	width: 600px;
+	height: 300px;
+	margin: 0 auto;
+	border: 1px solid #999;
+	padding: 5px;
+}
+
+#container div {
+	width: 26px;
+	height: 26px;
+	margin: 1px;
+	float: left;
+	/*background-color: #ddd;*/
+	border: solid 1px #bbb;
+	border-radius: 3px;
+}
+
+.snake {
+	background-color: #072;
+}
+
+.apple {
+	background-color: #822;
+}

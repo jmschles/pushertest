@@ -1,5 +1,7 @@
 <li>
-  <!-- <span class="created_at"><#%= message.created_at.strftime("%H:%M") %></span> -->
-  <%= message.user.email %>:
-  <%= message.content %>
+  <span class="time"><%= message.created_at.strftime("%H:%M") %></span>
+  <span class="sender <%= "self" if message.user.email == current_user.email %>">
+    <%= message.user.email %>:
+  </span>
+  <span class="msg"><%= message.content %></span>
 </li>

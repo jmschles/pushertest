@@ -3,10 +3,36 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #chatbox {
+  position: relative;
   width: 40%;
+  min-height: 200px;
   border: 1px solid #ccc;
   float: left;
+  padding: 10px;
   ul {
     list-style: none;
+    padding-left: 0;
+    margin-bottom: 40px;
   }
+  form {
+    position: absolute;
+    bottom: 15px;
+  }
+}
+
+.time {
+  color: #888;
+}
+
+.sender {
+  font-weight: bold;
+  color: blue;
+}
+
+.sender.self {
+  color: red;
+}
+
+.msg {
+  word-wrap: break-word;
 }

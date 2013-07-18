@@ -9,12 +9,14 @@
 </head>
 <body>
 
-<% if current_user %>
-  <p>
-    </em>Welcome, <%= current_user.email %>!</em>
-    <%= link_to "Logout", destroy_user_session_url, :method => :delete %>
-  </p>
-<% end %>
+<div class="header">
+  <% if current_user %>
+    <p>
+      </em>Welcome, <%= current_user.email %>!</em>
+      <%= link_to "Logout", destroy_user_session_url, :method => :delete %>
+    </p>
+  <% end %>
+</div>
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
