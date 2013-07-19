@@ -12,8 +12,22 @@
  *= require messages
  */
 
+h3 {
+  margin-top: 0px;
+}
+
 #membersbox {
-  width: 40%;
+  padding: 10px;
+  width: 45%;
+  border: 1px solid #ccc;
+  float: left;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.game-buttons {
+  padding: 10px;
+  width: 45%;
   border: 1px solid #ccc;
   float: left;
   margin-left: 20px;

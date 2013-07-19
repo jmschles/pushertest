@@ -14,7 +14,7 @@ channel.bind('pusher:subscription_succeeded', function() {
 
     $membersList.append($li);
   });
-  $("#membersbox").html($membersList);
+  $("#membersbox").append($membersList);
 });
 
 // Update the chatroom list when someone logs in

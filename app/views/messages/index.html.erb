@@ -19,7 +19,11 @@
 </div>
 
 <div id="membersbox">
+  <h3>Users Present</h3>
 </div>
 
-<%= button_to "Play Snake", game_playsnake_url, :method => "get" %>
-<%= button_to "Play Asteroids", game_playasteroids_url, :method => "get" %>
+<div class="game-buttons">
+  <h3>Play Games</h3>
+  <%= button_to "Play Snake", game_playsnake_url, :method => "get" %>
+  <%= button_to "Play Asteroids", game_playasteroids_url, :method => "get" %>
+</div>
