@@ -56,9 +56,15 @@ channel.bind('my-event', function(data) {
   $('#chat').append($li);
   // $('#chat').append('<li>' + time + ' ' + data.name + ': ' + data.message + '</li>');
   $('#chat').children().slice(0,-10).hide();
-  $('#chatbox input[type="text"]').val("");
 });
+$().ready(function(){
+  $("#new_message").submit(function() {
+    $.post(this.action, $(this).serialize())
+    this.reset()
+    return false
+  })
 
+});
 // Get rid of duplicates in chatroom list (refresh duping bug fix)
 var dedup = function () {
   var seen = {};
